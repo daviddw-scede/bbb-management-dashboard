@@ -1,0 +1,21 @@
+{
+  "company": "Kestrel Health",
+  "owner_first_name": "Priya",
+  "owner_role": "Head of Talent",
+  "as_of_date": "2026-09-29",
+  "generated_at": "2026-09-29T07:02:00+01:00",
+  "generated_by": "update-dashboard skill (daily, 07:00)",
+  "quarter": { "label": "Q3 2026", "start": "2026-07-01", "end": "2026-09-30" },
+  "sources": [
+    "Google Calendar (today's events)",
+    "Meeting transcripts from the last 24 hours",
+    "ATS export: roles.csv, downloaded 28 Sep 18:10"
+  ],
+  "kpis": [
+    { "id": "open_roles", "label": "Open roles", "value": 9, "unit": "", "note": "2 opened this month" },
+    { "id": "hires_q", "label": "Hires this quarter", "value": 11, "unit": "", "target": 14, "note": "3 to go, 2 days left" },
+    { "id": "offers_out", "label": "Offers out", "value": 3, "unit": "", "note": "1 expires Thursday" },
+    { "id": "interviews_wk", "label": "Interviews this week", "value": 17, "unit": "", "note": "6 are final stage" },
+    { "id": "tth", "label": "Median time to hire", "value": 34, "unit": "days", "delta": -4, "note": "vs 38 last quarter" }
+  ]
+}

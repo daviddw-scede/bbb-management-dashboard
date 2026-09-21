@@ -1,0 +1,66 @@
+{
+  "focus": [
+    "Close the Staff Backend Engineer offer before it expires Thursday",
+    "Agree Q4 headcount plan with Finance (2pm)",
+    "Unblock the Product Designer role: hiring manager has not reviewed 6 profiles"
+  ],
+  "meetings": [
+    {
+      "time": "09:30",
+      "duration_min": 30,
+      "title": "Talent team stand-up",
+      "type": "team",
+      "attendees": ["Tom Okafor", "Maya Lindqvist", "Jordan Reyes", "Aisha Bello"],
+      "prep": [
+        "Ask Maya for a decision date on the Product Designer shortlist",
+        "Tom: what does the Staff Backend candidate need to sign?"
+      ]
+    },
+    {
+      "time": "10:30",
+      "duration_min": 45,
+      "title": "Hiring manager sync: Engineering",
+      "type": "hiring_manager",
+      "attendees": ["Sofia Marchetti (VP Engineering)", "Tom Okafor"],
+      "prep": [
+        "Two Senior Frontend candidates have been waiting 5 days for feedback",
+        "Backend role is 61 days open: propose widening to remote EU",
+        "Sofia asked last week for a market rate on Staff level: bring the range"
+      ]
+    },
+    {
+      "time": "12:00",
+      "duration_min": 30,
+      "title": "1:1 with Jordan",
+      "type": "one_to_one",
+      "attendees": ["Jordan Reyes"],
+      "prep": [
+        "Jordan raised workload on 22 Sep: 4 GTM roles open, 1 more coming",
+        "Goal review: he wanted more exposure to exec hiring this quarter"
+      ]
+    },
+    {
+      "time": "14:00",
+      "duration_min": 60,
+      "title": "Q4 headcount planning",
+      "type": "leadership",
+      "attendees": ["Daniel Osei (CFO)", "Sofia Marchetti", "Hannah Blake (CPO)"],
+      "prep": [
+        "Q3 will land at 11 to 12 hires against 14: explain the 2 late offers",
+        "Q4 request from Engineering is 8 roles: that needs a second recruiter or agency support",
+        "Bring the time to hire trend (34 days, down from 38)"
+      ]
+    },
+    {
+      "time": "16:00",
+      "duration_min": 30,
+      "title": "Debrief: Head of Customer Success final interviews",
+      "type": "debrief",
+      "attendees": ["Hannah Blake (CPO)", "Jordan Reyes", "Liam Carter (Sales Director)"],
+      "prep": [
+        "Two finalists, panel split on Friday: decide today or lose the front-runner",
+        "Comp expectations sit at the top of the band"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "items": [
+    { "id": "a-101", "title": "Send Staff Backend Engineer offer letter for signature", "owner": "Tom Okafor", "due": "2026-09-29", "priority": "high", "status": "open", "source": "Transcript: Eng hiring sync, 26 Sep" },
+    { "id": "a-102", "title": "Chase Maya's shortlist decision on Product Designer (6 profiles waiting)", "owner": "me", "due": "2026-09-29", "priority": "high", "status": "open", "source": "Transcript: Product stand-up, 25 Sep" },
+    { "id": "a-103", "title": "Prepare Q4 headcount options: second recruiter vs agency", "owner": "me", "due": "2026-09-29", "priority": "high", "status": "open", "source": "Calendar: Q4 headcount planning, today 14:00" },
+    { "id": "a-104", "title": "Reply to Sofia with Staff level salary range", "owner": "me", "due": "2026-09-30", "priority": "medium", "status": "open", "source": "Transcript: Eng hiring sync, 26 Sep" },
+    { "id": "a-105", "title": "Book final-stage interviews for 2 Account Executive candidates", "owner": "Jordan Reyes", "due": "2026-09-30", "priority": "medium", "status": "waiting", "source": "Transcript: GTM pipeline review, 24 Sep" },
+    { "id": "a-106", "title": "Update careers page: remove the filled Data Analyst role", "owner": "Aisha Bello", "due": "2026-10-01", "priority": "low", "status": "open", "source": "ATS export: role closed 26 Sep" },
+    { "id": "a-107", "title": "Write Q3 hiring summary for the leadership pack", "owner": "me", "due": "2026-10-02", "priority": "medium", "status": "open", "source": "Transcript: Leadership weekly, 22 Sep" },
+    { "id": "a-108", "title": "Confirm start date and laptop for the new Data Analyst", "owner": "Aisha Bello", "due": "2026-09-26", "priority": "medium", "status": "done", "source": "Transcript: Talent stand-up, 25 Sep" }
+  ]
+}

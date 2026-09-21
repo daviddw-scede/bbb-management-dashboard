@@ -1,0 +1,12 @@
+{
+  "quarter_target": 14,
+  "quarter_hires": 11,
+  "weekly_screens_labels": ["w/c 10 Aug", "17 Aug", "24 Aug", "31 Aug", "7 Sep", "14 Sep", "21 Sep", "28 Sep"],
+  "weekly_screens_team": [22, 26, 19, 31, 34, 29, 38, 12],
+  "recruiters": [
+    { "name": "Tom Okafor", "focus": "Engineering", "open_roles": 3, "this_week": { "screens": 4, "interviews": 6, "offers": 1 }, "quarter": { "hires": 4, "target": 5 } },
+    { "name": "Maya Lindqvist", "focus": "Product & Design", "open_roles": 2, "this_week": { "screens": 3, "interviews": 4, "offers": 0 }, "quarter": { "hires": 2, "target": 3 } },
+    { "name": "Jordan Reyes", "focus": "Go-to-market", "open_roles": 4, "this_week": { "screens": 5, "interviews": 7, "offers": 2 }, "quarter": { "hires": 4, "target": 5 } },
+    { "name": "Aisha Bello", "focus": "Sourcing (all teams)", "open_roles": 0, "this_week": { "screens": 0, "interviews": 0, "offers": 0 }, "quarter": { "hires": 1, "target": 1 }, "note": "Sourcer: 41 outreach messages this week, 9 replies" }
+  ]
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Talent HQ</title>
+  <meta name="description" content="A talent leader's morning dashboard. The data lives in the /data folder and is rewritten every morning by an AI skill.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <img src="assets/scede-logo.svg" alt="Scede" class="logo">
+        <span class="brand-sep"></span>
+        <span class="brand-name">Talent HQ</span>
+      </div>
+      <div class="stamp" id="stamp">Loading…</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <p class="eyebrow" id="hero-date">—</p>
+        <h1 id="hero-title">Good morning</h1>
+        <p class="hero-sub" id="hero-sub">Here is what matters today.</p>
+      </div>
+      <div class="focus card" id="focus">
+        <h3>Top three today</h3>
+        <ol id="focus-list"></ol>
+      </div>
+    </section>
+
+    <section class="kpis" id="kpis" aria-label="Headline numbers"></section>
+
+    <section class="columns">
+      <div class="col col-left">
+        <div class="card" id="today">
+          <div class="card-head">
+            <h2>Today's meetings</h2>
+            <span class="count" id="meeting-count"></span>
+          </div>
+          <ul class="meetings" id="meeting-list"></ul>
+        </div>
+
+        <div class="card" id="actions">
+          <div class="card-head">
+            <h2>Actions</h2>
+            <div class="toggle" role="group" aria-label="Filter actions">
+              <button class="on" data-filter="open">Open</button>
+              <button data-filter="mine">Mine</button>
+              <button data-filter="all">All</button>
+            </div>
+          </div>
+          <ul class="actions" id="action-list"></ul>
+        </div>
+      </div>
+
+      <div class="col col-right">
+        <div class="card" id="team">
+          <div class="card-head">
+            <h2>Team this week</h2>
+            <span class="count" id="quarter-progress"></span>
+          </div>
+          <div class="team-grid">
+            <div class="chart" id="chart">
+              <p class="chart-title">Screens per week, team total</p>
+              <div class="chart-body" id="chart-body"></div>
+            </div>
+            <div class="table-wrap">
+              <table class="team-table" id="team-table">
+                <thead>
+                  <tr>
+                    <th>Recruiter</th>
+                    <th class="num">Open</th>
+                    <th class="num">Screens</th>
+                    <th class="num">Interviews</th>
+                    <th class="num">Offers</th>
+                    <th class="num">Hires vs target</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="full">
+    <div class="card" id="roles">
+      <div class="card-head">
+        <h2>Open roles</h2>
+        <span class="count" id="role-count"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="roles-table" id="roles-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Hiring manager</th>
+              <th class="num">Days open</th>
+              <th class="num">Screened</th>
+              <th class="num">Interviewing</th>
+              <th class="num">Offer</th>
+              <th>Health</th>
+              <th>Next step</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    </section>
+
+    <footer class="foot">
+      <p id="sources"></p>
+      <p>Everything on this page is read from the <code>/data</code> folder. No database. Change a JSON file, push, and the page updates. <a href="https://github.com/daviddw-scede/bbb-management-dashboard#readme">How it works</a></p>
+      <p class="fake">Demo data. Kestrel Health and everyone in it are fictional.</p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
