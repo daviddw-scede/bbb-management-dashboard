@@ -18,7 +18,7 @@ The trick that keeps it simple: **there is no database.** The data is five small
 
 1. **GitHub account** (github.com, free): where the code lives.
 2. **Vercel account** (vercel.com, sign in with GitHub, free): turns the code into a website.
-3. **An AI tool that can write code.** Claude or ChatGPT is fine. If it can connect to GitHub, the skill pushes for you. If it cannot, it hands you the files and you paste them. Copilot users need Copilot Studio for connections; Gemini users need Antigravity or an IDE. Without those, join Shay's session and come back to this later.
+3. **An AI tool that can write code.** Claude or ChatGPT is the smooth path: if it can connect to GitHub, the skill pushes for you; if it cannot, it hands you the files and you paste them. Gemini: build the page in Gemini Canvas, export the code and upload it; the morning skill is a Gem that hands you the files (Antigravity or an IDE if you want it to push). Copilot: join Shay's session today and do this one at home with Copilot Studio.
 
 ## The five steps
 
@@ -49,4 +49,6 @@ Full prompts: `skill/PROMPTS.md` in the example repository.
 
 Add a "stuck candidates" section · Move the data into Supabase when more than one person needs to write · Put the page behind SSO · Connect the ATS directly through a connector
 
-**Example:** github.com/daviddw-scede/bbb-management-dashboard · Live: see the QR code on the day
+**Example repository:** github.com/daviddw-scede/bbb-management-dashboard
+**Live example:** bbb-management-dashboard-daviddw-6234s-projects.vercel.app
+**Show and tell:** 14:00. Bring your URL, not your slides.
