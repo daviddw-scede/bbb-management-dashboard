@@ -1,6 +1,6 @@
 # Built Before Brunch: the dashboard that has no database
 
-**Session 2 of 3 · Upper intermediate · David Dwyer-Whitmore, Scede**
+**Session 2 of 3 · Upper intermediate · David Dogan-Webb, Scede**
 
 ## What we are building
 
