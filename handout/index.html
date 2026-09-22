@@ -9,45 +9,45 @@
 <style>
   :root{--ink:#232323;--muted:#5B6168;--line:#E6E4E1;--green:#1AA56A;--green-dark:#12724A;--green-tint:#EDF6EA;--navy:#0E335B;--paper:#FFFFFF;--tint:#F8F7F7}
   *{box-sizing:border-box}
-  html,body{margin:0;background:var(--tint);color:var(--ink);font-family:Manrope,Arial,sans-serif;font-size:11.5pt;line-height:1.4}
-  .page{background:var(--paper);width:210mm;min-height:297mm;margin:12mm auto;padding:16mm 16mm 14mm;position:relative;box-shadow:0 2px 14px rgba(0,0,0,.06)}
+  html,body{margin:0;background:var(--tint);color:var(--ink);font-family:Manrope,Arial,sans-serif;font-size:9.5pt;line-height:1.32}
+  .page{background:var(--paper);width:210mm;height:297mm;overflow:hidden;margin:10mm auto;padding:11mm 15mm 8mm;display:flex;flex-direction:column;box-shadow:0 2px 14px rgba(0,0,0,.06)}
   .kicker{font-size:8.5pt;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green-dark);margin:0 0 4px}
-  h1{font-size:26pt;font-weight:800;letter-spacing:-.6px;line-height:1.05;margin:0 0 4px}
-  .byline{color:var(--muted);margin:0 0 10mm;font-size:10.5pt}
-  h2{font-size:12.5pt;font-weight:800;margin:7mm 0 2.5mm;letter-spacing:-.2px}
+  h1{font-size:23pt;font-weight:800;letter-spacing:-.6px;line-height:1.05;margin:0 0 3px}
+  .byline{color:var(--muted);margin:0 0 6mm;font-size:9.5pt}
+  h2{font-size:11pt;font-weight:800;margin:4mm 0 1.6mm;letter-spacing:-.2px}
   h2:first-of-type{margin-top:0}
-  p{margin:0 0 2.5mm}
-  .lede{font-size:12pt}
-  .diagram{font-family:'Roboto Mono',monospace;font-size:8.6pt;line-height:1.35;background:var(--green-tint);border-radius:8px;padding:4mm 5mm;white-space:pre;margin:3mm 0 0;color:var(--ink)}
+  p{margin:0 0 2mm}
+  .lede{font-size:10pt}
+  .diagram{font-family:'Roboto Mono',monospace;font-size:7.8pt;line-height:1.3;background:var(--green-tint);border-radius:8px;padding:3mm 4mm;white-space:pre;margin:2mm 0 0;color:var(--ink)}
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
   ol,ul{margin:0;padding-left:5.5mm}
-  li{margin:0 0 1.6mm}
-  table{width:100%;border-collapse:collapse;font-size:10pt}
+  li{margin:0 0 1mm}
+  table{width:100%;border-collapse:collapse;font-size:9.2pt}
   th{text-align:left;font-size:8.5pt;letter-spacing:1.5px;text-transform:uppercase;color:var(--green-dark);padding:0 3mm 1.5mm 0;border-bottom:2px solid var(--green)}
-  td{padding:2mm 3mm 2mm 0;border-bottom:1px solid var(--line);vertical-align:top}
+  td{padding:1.4mm 3mm 1.4mm 0;border-bottom:1px solid var(--line);vertical-align:top}
   td.n{font-weight:800;color:var(--green-dark);width:6mm}
-  .say{font-family:'Roboto Mono',monospace;font-size:9pt;background:#F1F5F3;border-left:3px solid var(--green);padding:1.5mm 2.5mm;border-radius:3px;display:block}
-  .prompt{background:#232323;color:#F3F3F1;border-radius:8px;padding:4mm 5mm;margin:0 0 3.5mm;page-break-inside:avoid}
-  .prompt .label{font-size:8.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9BE2BE;margin:0 0 1.5mm}
-  .prompt p{margin:0;font-size:9.6pt;line-height:1.45}
-  .prompt .note{color:#BFD8D5;font-size:9pt;margin-top:1.5mm}
-  .rules{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
-  .rule{background:var(--navy);color:#FDFDFC;border-radius:8px;padding:3.5mm 4mm}
+  .say{font-family:'Roboto Mono',monospace;font-size:8.2pt;background:#F1F5F3;border-left:3px solid var(--green);padding:1.5mm 2.5mm;border-radius:3px;display:block}
+  .prompt{background:#232323;color:#F3F3F1;border-radius:8px;padding:2.4mm 3.6mm;margin:0 0 1.7mm}
+  .prompt .label{font-size:8pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9BE2BE;margin:0 0 1mm}
+  .prompt p{margin:0;font-size:8.5pt;line-height:1.36}
+  .prompt .note{color:#BFD8D5;font-size:8.4pt;margin-top:1.2mm}
+  .rules{display:grid;grid-template-columns:1fr 1fr;gap:2.2mm}
+  .rule{background:var(--navy);color:#FDFDFC;border-radius:8px;padding:2.2mm 3.2mm}
   .rule b{display:block;margin-bottom:1mm}
-  .rule span{color:#BFD8D5;font-size:9.8pt}
-  .foot{position:absolute;left:16mm;right:16mm;bottom:9mm;display:flex;justify-content:space-between;align-items:center;font-size:8.5pt;color:var(--muted);border-top:1px solid var(--line);padding-top:2.5mm}
+  .rule span{color:#BFD8D5;font-size:8.6pt}
+  .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:8pt;color:var(--muted);border-top:1px solid var(--line);padding-top:2mm}
   .foot b{color:var(--ink)}
-  .links{background:var(--green-tint);border-radius:8px;padding:3.5mm 4.5mm;font-size:10pt}
+  .links{background:var(--green-tint);border-radius:8px;padding:2.4mm 3.6mm;font-size:9pt}
   .links b{display:inline-block;min-width:34mm}
-  .qr{float:right;width:24mm;height:24mm;border:1px dashed var(--green-dark);border-radius:4px;margin:0 0 2mm 4mm;display:flex;align-items:center;justify-content:center;font-size:7.5pt;text-align:center;color:var(--green-dark);padding:2mm}
-  @media print{html,body{background:#fff}.page{margin:0;box-shadow:none;width:auto;min-height:0;padding:14mm 15mm 16mm}.pb{page-break-before:always}}
+  .qr{float:right;width:20mm;height:20mm;border:1px dashed var(--green-dark);border-radius:4px;margin:0 0 2mm 4mm;display:flex;align-items:center;justify-content:center;font-size:7.5pt;text-align:center;color:var(--green-dark);padding:2mm}
+  @media print{html,body{background:#fff}.page{margin:0;box-shadow:none}.pb{page-break-before:always}}
   @page{size:A4;margin:0}
 </style>
 </head>
 <body>
 
 <section class="page">
-  <p class="kicker">Built Before Brunch · 29 September 2026 · Session 2 of 3 · Upper intermediate</p>
+  <p class="kicker">Built Before Brunch · 29 Sep 2026 · Session 2 of 3 · Upper intermediate</p>
   <h1>The dashboard with no database</h1>
   <p class="byline">A management dashboard that updates itself every morning. GitHub, Vercel and one AI skill. Nothing else. · David Dwyer-Whitmore, Scede</p>
 
@@ -102,9 +102,7 @@
 
   <div class="prompt"><p class="label">1 · Build the page</p><p>Build me a one-page personal dashboard as a static website: one index.html, one styles.css, one app.js, no framework, no build step, so it can be deployed on Vercel as-is. The page reads its data from JSON files in a data/ folder using fetch, and renders: (1) a greeting with today's date, (2) five headline numbers, (3) today's meetings with prep notes under each, (4) an actions list with owner, due date and priority, (5) a table of my team with this week's activity, (6) a table of open roles with stage counts and a health flag. Create realistic example data for a talent team at a [200-person tech company]. Use the font Manrope from Google Fonts, a light background, white cards, one accent colour [#1AA56A]. Make it work on a phone. Write a data/SCHEMA.md that documents every field so a future automation can rewrite the files safely.</p></div>
 
-  <div class="prompt"><p class="label">2 · Put it on GitHub</p><p>Create a new private GitHub repository called [my-dashboard], add all the files, and push to the main branch. Tell me the repository URL.</p><p class="note">Not connected? github.com/new → "uploading an existing file" → drag the files in → commit.</p></div>
-
-  <div class="prompt"><p class="label">3 · Deploy it (no prompt)</p><p>vercel.com → Add New Project → import the repository → leave every setting as default → Deploy. Ninety seconds later you have a URL. Every push to main redeploys it.</p></div>
+  <div class="prompt"><p class="label">2 · Put it on GitHub</p><p>Create a new private GitHub repository called [my-dashboard], add all the files, and push to the main branch. Tell me the repository URL.</p><p class="note">Not connected? github.com/new → "uploading an existing file" → drag the files in → commit. Then step 3, no prompt: vercel.com → Add New Project → import → leave defaults → Deploy. Ninety seconds later you have a URL; every push to main redeploys it.</p></div>
 
   <div class="prompt"><p class="label">4 · Make the data update itself</p><p>Write a skill called update-dashboard (a SKILL.md file in .claude/skills/update-dashboard/) that, when run, reads today's calendar, my meeting notes from the last 24 hours and the latest ATS export I give it, rewrites the five JSON files in data/ following data/SCHEMA.md, validates them, commits only the data files with the message chore(data): daily update YYYY-MM-DD and pushes to main. It must keep ids stable, never invent a number, and never include a candidate's name. Reply in five lines.</p><p class="note">ChatGPT: ask for the same thing "as instructions for a Custom GPT", paste into the Instructions box, attach SCHEMA.md. Gemini: the same as a Gem; it hands you the files to paste.</p></div>
 
@@ -118,7 +116,7 @@
     <div class="rule"><b>The skill only touches data/.</b><span>The page code changes when you ask, in a conversation. The morning run never edits it.</span></div>
   </div>
 
-  <div class="cols" style="margin-top:6mm">
+  <div class="cols" style="margin-top:3mm">
     <div>
       <h2>If your laptop is locked down</h2>
       <ul>
@@ -127,7 +125,7 @@
         <li><b>AI can't see your calendar:</b> paste today's agenda.</li>
         <li><b>Can't create a GitHub account:</b> not today. Shay's session needs nothing external.</li>
       </ul>
-      <p style="font-size:10pt;color:var(--muted)">Every workaround is the same shape: the AI does the thinking, you do the copy and paste. Slower, not worse.</p>
+      
     </div>
     <div>
       <h2>Take it further, in this order</h2>
@@ -140,7 +138,7 @@
     </div>
   </div>
 
-  <div class="links" style="margin-top:5mm">
+  <div class="links" style="margin-top:3mm">
     <div class="qr">QR to the live example goes here</div>
     <p><b>Example repository</b> github.com/daviddw-scede/bbb-management-dashboard</p>
     <p><b>Live example</b> bbb-management-dashboard-daviddw-6234s-projects.vercel.app</p>
