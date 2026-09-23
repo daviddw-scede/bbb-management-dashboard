@@ -42,6 +42,21 @@
   .qr{float:right;width:20mm;height:20mm;border:1px dashed var(--green-dark);border-radius:4px;margin:0 0 2mm 4mm;display:flex;align-items:center;justify-content:center;font-size:7.5pt;text-align:center;color:var(--green-dark);padding:2mm}
   @media print{html,body{background:#fff}.page{margin:0;box-shadow:none}.pb{page-break-before:always}}
   @page{size:A4;margin:0}
+
+  .parts td:first-child{font-weight:800;white-space:nowrap}
+  .parts td:nth-child(3){color:var(--muted)}
+  .dec{display:grid;grid-template-columns:1fr 1fr;gap:2.4mm}
+  .card{border:1px solid var(--line);border-radius:8px;padding:2.4mm 3.2mm}
+  .card b{display:block;margin-bottom:.8mm}
+  .card .ex{display:block;color:var(--muted);font-size:8.6pt;margin-top:1mm}
+  .brief{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+  .brief .l{background:#232323;color:#F3F3F1;font-family:'Roboto Mono',monospace;font-size:7.7pt;line-height:1.36;padding:1.6mm 3mm;border-bottom:1px solid #3a3a3a}
+  .brief .r{background:var(--green-tint);font-size:8.6pt;padding:1.6mm 3mm;border-bottom:1px solid #d8e8d4}
+  .brief .r b{color:var(--green-dark)}
+  .principles{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm;margin-bottom:2.4mm}
+  .principles div{background:var(--navy);color:#FDFDFC;border-radius:8px;padding:2mm 2.6mm;font-size:8.6pt}
+  .principles b{display:block;font-size:9.4pt}
+  .principles span{color:#BFD8D5}
 </style>
 </head>
 <body>
@@ -49,96 +64,113 @@
 <section class="page">
   <p class="kicker">Built Before Brunch · 29 Sep 2026 · Session 2 of 3 · Upper intermediate</p>
   <h1>The dashboard with no database</h1>
-  <p class="byline">A management dashboard that updates itself every morning. GitHub, Vercel and one AI skill. Nothing else. · David Dogan-Webb, Scede</p>
+  <p class="byline">How to get an AI to build, and then keep running, a management dashboard that updates itself every morning. · David Dogan-Webb, Scede</p>
 
-  <h2>What we are building</h2>
-  <p class="lede">A one-page dashboard, live on the web, for a talent leader: today's meetings with prep, the to-do list pulled from meeting notes, and what the team and open roles are doing. It refreshes before you open your laptop.</p>
-  <p><b>The trick that keeps it simple: there is no database.</b> The data is five small text files inside the website's code. An AI skill rewrites them each morning and pushes to GitHub. Vercel notices and republishes the page. That is the whole system. Not the best architecture. The easiest one to understand completely and get working in two hours.</p>
+  <p class="lede">This isn't a list of prompts. Prompts go out of date and work once. This page explains <b>how the system works and the decisions you have to make</b>, so you can brief any AI to build it and fix it yourself when it goes wrong. It's deliberately simple, not the best architecture: you can understand all of it in two hours.</p>
+
+  <h2>The idea, in one picture</h2>
   <pre class="diagram"> Calendar ─┐
- Notes ────┼─▶  AI skill (07:00)  ─▶  data/*.json  ─▶  GitHub  ─▶  Vercel  ─▶  your browser
- ATS ──────┘    reads, rewrites       5 files          push       redeploys</pre>
+ Notes ────┼─▶  AI skill  ─▶  data/*.json  ─▶  GitHub  ─▶  Vercel  ─▶  your browser
+ ATS ──────┘    (07:00)       5 text files     saves it    publishes it</pre>
 
-  <div class="cols">
-    <div>
-      <h2>You need</h2>
-      <ol>
-        <li><b>GitHub account</b> (github.com, free). Where the code lives.</li>
-        <li><b>Vercel account</b> (vercel.com, sign in with GitHub, free). Turns the code into a website.</li>
-        <li><b>An AI tool that can write code.</b> Claude or ChatGPT is the smooth path: connected to GitHub, the skill pushes for you; not connected, it hands you the files and you paste them.</li>
-      </ol>
-      <p style="margin-top:2.5mm"><b>Gemini:</b> build the page in Gemini Canvas, export the code, upload it. The morning skill is a Gem that hands you the files.<br><b>Copilot:</b> Shay's session today; this one at home with Copilot Studio.</p>
-    </div>
-    <div>
-      <h2>The five files</h2>
-      <table>
-        <tr><th>File</th><th>Holds</th></tr>
-        <tr><td><b>meta.json</b></td><td>As-of date, the five headline numbers</td></tr>
-        <tr><td><b>today.json</b></td><td>Top three, today's meetings, prep bullets</td></tr>
-        <tr><td><b>actions.json</b></td><td>To-dos with owner, due, priority, source</td></tr>
-        <tr><td><b>team.json</b></td><td>Hires vs target, weekly screens per recruiter</td></tr>
-        <tr><td><b>roles.json</b></td><td>Open roles, stage counts, health flag</td></tr>
-      </table>
-      <p style="margin-top:2.5mm;font-size:10pt"><b>SCHEMA.md</b> is the contract: field names, allowed values, rules. Your AI writes it, then reads it before every update.</p>
-    </div>
+  <table class="parts" style="margin-top:2.4mm">
+    <tr><th>Part</th><th>What it does</th><th>Why it's there</th></tr>
+    <tr><td>The data files</td><td>Five small text files hold everything the page shows</td><td>No database to set up or pay for. You can open them and read them. Think of a whiteboard, not a filing system</td></tr>
+    <tr><td>The contract</td><td>SCHEMA.md: every field, its allowed values, the rules</td><td>The page and the AI agree on the shape. Change the contract, not the code</td></tr>
+    <tr><td>The skill</td><td>A written brief the AI follows each morning: read sources, rewrite the files</td><td>The only part that "thinks". Everything else is plumbing</td></tr>
+    <tr><td>GitHub</td><td>Stores the files and every past version</td><td>A history of every morning. Yesterday's numbers are one click away</td></tr>
+    <tr><td>Vercel</td><td>Republishes the page whenever GitHub changes</td><td>Nobody presses "deploy". Save the files, and the site updates within about a minute</td></tr>
+    <tr><td>The schedule</td><td>Runs the skill at 07:00 on weekdays</td><td>A skill you have to remember to run is a skill you'll stop running</td></tr>
+  </table>
+
+  <h2>The four decisions to make before you type anything</h2>
+  <p>Building the real version of this with live recruitment data, none of the hard parts were code. They were these:</p>
+  <div class="dec">
+    <div class="card"><b>1 · Whose view is it, and at what scale?</b>One person's pipeline and a 23-person team's are different pages. <span class="ex">Our real team had 98 open roles. The page shows the 15 most urgent, with the real total in the header.</span></div>
+    <div class="card"><b>2 · What do your words mean?</b>"Open role", "hire", "this week": your systems disagree about all of them. Define each one once. <span class="ex">Is a verbal accept a hire? We said no: signed, with a date. Left alone, the AI counted it.</span></div>
+    <div class="card"><b>3 · What does "at risk" mean?</b>If judgement isn't written down as a rule, the AI makes a new one up every morning. <span class="ex">Our first rule flagged roles opened two days ago. We looked at what it flagged and added a grace period.</span></div>
+    <div class="card"><b>4 · What must never appear?</b>Decide before real data goes in, not after. <span class="ex">Counts only, never candidate names. Clients shown as letters, people as numbers.</span></div>
   </div>
 
-  <h2>The five steps · about 60 minutes</h2>
-  <table>
-    <tr><th></th><th>Step</th><th>You say</th><th>You get</th></tr>
-    <tr><td class="n">0</td><td>Accounts, then connections · 5 min</td><td>GitHub, Vercel, connect your AI to GitHub if it can</td><td>Ready to build</td></tr>
-    <tr><td class="n">1</td><td>Build the page · 15 min</td><td><span class="say">Build me a one-page dashboard as a static site that reads JSON files from /data …</span></td><td>index.html, styles.css, app.js, data/</td></tr>
-    <tr><td class="n">2</td><td>Put it on GitHub · 5 min</td><td><span class="say">Push it to a new GitHub repo</span> or upload at github.com/new</td><td>A repository</td></tr>
-    <tr><td class="n">3</td><td>Put it on the web · 5 min</td><td>Vercel: Add New Project, import, leave defaults, Deploy</td><td>A live URL</td></tr>
-    <tr><td class="n">4</td><td>Write the skill · 20 min</td><td><span class="say">Write a skill that rewrites the data files from my calendar, notes and ATS export, then commits and pushes</span></td><td>SKILL.md or Custom GPT instructions</td></tr>
-    <tr><td class="n">5</td><td>Run it, then schedule it · 10 min</td><td><span class="say">Run it for today</span> then Scheduled tasks, weekdays 07:00</td><td>It runs without you</td></tr>
-  </table>
-  <p style="margin-top:2.5mm;color:var(--muted);font-size:10pt">Full prompts overleaf. Read what comes back before you send the next one. Ask for changes in plain English: <i>move the actions under the team table</i>. That is vibe coding.</p>
+  <div class="cols" style="margin-top:3mm">
+    <div>
+      <h2>You need</h2>
+      <ul>
+        <li><b>GitHub</b> and <b>Vercel</b> accounts (free; sign in to Vercel with GitHub).</li>
+        <li><b>An AI that can write code:</b> Claude or ChatGPT. If it connects to GitHub it saves the files for you; if not, it hands them to you to paste.</li>
+        <li><b>Copilot?</b> Go to Shay's session today and try this one later with Copilot Studio.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>The order to build it in</h2>
+      <ol>
+        <li>The page, with example data, plus its SCHEMA.md</li>
+        <li>GitHub, then Vercel: now it's live</li>
+        <li>The skill, run once by hand, and read what it did</li>
+        <li>The schedule, only once a run by hand is right</li>
+      </ol>
+    </div>
+  </div>
 
   <div class="foot"><span><b>Scede</b> · Built Before Brunch · Session 2 handout</span><span>Page 1 of 2</span></div>
 </section>
 
 <section class="page pb">
-  <p class="kicker">The prompts, in order · swap the bracketed parts for your own</p>
+  <p class="kicker">Briefing the AI</p>
+  <h2 style="margin-top:0">A good brief has four parts</h2>
+  <div class="principles">
+    <div><b>The goal</b><span>Whose page, what it's for, what period.</span></div>
+    <div><b>The shape</b><span>Point it at the contract (SCHEMA.md) every time.</span></div>
+    <div><b>The rules</b><span>Your definitions, your judgement as rules, your non-negotiables.</span></div>
+    <div><b>Done looks like</b><span>How you'll know in ten seconds that it worked.</span></div>
+  </div>
 
-  <div class="prompt"><p class="label">1 · Build the page</p><p>Build me a one-page personal dashboard as a static website: one index.html, one styles.css, one app.js, no framework, no build step, so it can be deployed on Vercel as-is. The page reads its data from JSON files in a data/ folder using fetch, and renders: (1) a greeting with today's date, (2) five headline numbers, (3) today's meetings with prep notes under each, (4) an actions list with owner, due date and priority, (5) a table of my team with this week's activity, (6) a table of open roles with stage counts and a health flag. Create realistic example data for a talent team at a [200-person tech company]. Use the font Manrope from Google Fonts, a light background, white cards, one accent colour [#1AA56A]. Make it work on a phone. Write a data/SCHEMA.md that documents every field so a future automation can rewrite the files safely.</p></div>
-
-  <div class="prompt"><p class="label">2 · Put it on GitHub</p><p>Create a new private GitHub repository called [my-dashboard], add all the files, and push to the main branch. Tell me the repository URL.</p><p class="note">Not connected? github.com/new → "uploading an existing file" → drag the files in → commit. Then step 3, no prompt: vercel.com → Add New Project → import → leave defaults → Deploy. Ninety seconds later you have a URL; every push to main redeploys it.</p></div>
-
-  <div class="prompt"><p class="label">4 · Make the data update itself</p><p>Write a skill called update-dashboard (a SKILL.md file in .claude/skills/update-dashboard/) that, when run, reads today's calendar, my meeting notes from the last 24 hours and the latest ATS export I give it, rewrites the five JSON files in data/ following data/SCHEMA.md, validates them, commits only the data files with the message chore(data): daily update YYYY-MM-DD and pushes to main. It must keep ids stable, never invent a number, and never include a candidate's name. Reply in five lines.</p><p class="note">ChatGPT: ask for the same thing "as instructions for a Custom GPT", paste into the Instructions box, attach SCHEMA.md. Gemini: the same as a Gem; it hands you the files to paste.</p></div>
-
-  <div class="prompt"><p class="label">5 · Run it once, then schedule it</p><p>Run the update-dashboard skill for today. Here is my ATS export: [paste or attach].</p><p class="note">Then: Claude → Scheduled tasks → "Run the update-dashboard skill", weekdays 07:00. ChatGPT → Tasks, same wording. The skill you have to remember to run is the skill you will stop running.</p></div>
-
-  <h2>Four rules worth stealing</h2>
-  <div class="rules">
-    <div class="rule"><b>Never invent a number.</b><span>Source missing? Keep yesterday's value and say so.</span></div>
-    <div class="rule"><b>No candidate names. Ever.</b><span>Counts only. The ATS is the system of record for people. GDPR, and what lets you share the URL.</span></div>
-    <div class="rule"><b>Keep ids stable.</b><span>Action a-101 today is a-101 tomorrow. It is how the page tracks what got done.</span></div>
-    <div class="rule"><b>The skill only touches data/.</b><span>The page code changes when you ask, in a conversation. The morning run never edits it.</span></div>
+  <p style="margin-bottom:1.6mm"><b>One real example, taken apart.</b> These are excerpts from the brief that runs our live version. On the left is what it says; on the right, why that line is there.</p>
+  <div class="brief">
+    <div class="l">Team shown: everyone who reports to [manager], still employed. Quarter: the calendar quarter containing today.</div>
+    <div class="r"><b>Goal.</b> Without an exact definition, every run quietly picks a different team or period.</div>
+    <div class="l">Open role = live in the ATS, not closed or cancelled. Hire = signed, with a signed date. A verbal accept is not a hire.</div>
+    <div class="r"><b>Definitions.</b> Pin down every word your systems disagree on. Once, in writing.</div>
+    <div class="l">No due date in the meeting notes → leave it blank. Do not guess one. No target set → blank plus a note, never 0.</div>
+    <div class="r"><b>Missing data.</b> Fake data is always complete; real data never is. Say what to do with gaps, or the AI fills them in.</div>
+    <div class="l">At risk = nothing logged for 4 weeks and open 60+ days. Watch = open 90+ days, or 21+ days with no interviews.</div>
+    <div class="r"><b>Judgement as a rule.</b> The same every morning, and something your team can argue with.</div>
+    <div class="l">Counts only. No candidate names, ever. Run the check before saving. If it fails, fix the data, never the check.</div>
+    <div class="r"><b>Non-negotiables, enforced.</b> A rule in a prompt is a request; a check is a guarantee.</div>
+    <div class="l" style="border-bottom:0">Reply in five lines: sources used or missing · meetings · actions · roles needing attention · published or not.</div>
+    <div class="r" style="border-bottom:0"><b>Done looks like.</b> You can tell at a glance whether the run worked.</div>
   </div>
 
   <div class="cols" style="margin-top:3mm">
     <div>
-      <h2>If your laptop is locked down</h2>
+      <h2>What went wrong, or nearly did</h2>
       <ul>
-        <li><b>AI can't connect to GitHub:</b> ask for the files, paste them into GitHub's web editor.</li>
-        <li><b>AI can't connect to your ATS:</b> export a report each morning and attach it. Automate the export later.</li>
-        <li><b>AI can't see your calendar:</b> paste today's agenda.</li>
-        <li><b>Can't create a GitHub account:</b> not today. Shay's session needs nothing external.</li>
+        <li><b>Real data has gaps; fake data doesn't.</b> A blank due date would have crashed the to-do list, and a missing target would have printed "NaN". We only caught it because we tested with real data first. So should you.</li>
+        <li><b>Gaps get filled in.</b> Meeting notes rarely give due dates. Unless you say "leave it blank", the AI will invent one.</li>
+        <li><b>Private data slipped in.</b> An email address got into the sources line, and the check caught it. That's what the check is for.</li>
+        <li><b>The first rule was wrong.</b> "No interviews in 4 weeks = watch" flagged roles opened that week. Read what a rule flags before you trust it.</li>
+        <li><b>The first run raised a real question.</b> 19 of 98 roles had nothing logged for a month. Is the search stalled, or did nobody close the role?</li>
       </ul>
-      
     </div>
     <div>
+      <h2>If your laptop is locked down</h2>
+      <ul>
+        <li><b>AI can't reach GitHub:</b> ask for the files and paste them into GitHub's web editor.</li>
+        <li><b>AI can't reach your ATS:</b> export a report each morning and attach it.</li>
+        <li><b>AI can't see your calendar:</b> paste today's agenda.</li>
+        <li><b>No GitHub account allowed:</b> Shay's session needs nothing external.</li>
+      </ul>
       <h2>Take it further, in this order</h2>
       <ol>
-        <li><b>Add a section:</b> a "waiting on hiring manager" list counting candidates stuck more than 3 days.</li>
-        <li><b>Connect the source:</b> replace the export with a connector so the skill reads the ATS or calendar directly.</li>
-        <li><b>Put it behind a login</b> before real data goes in: your SSO, or Vercel deployment protection.</li>
-        <li><b>Then a database.</b> When more than one person needs to write, move data/ into Supabase (free tier). That is where the shortcut stops paying for itself.</li>
+        <li>Add a section: candidates waiting on hiring-manager feedback.</li>
+        <li>Swap the export for a live connection to the source.</li>
+        <li>Put it behind a login <b>before</b> real data goes in.</li>
+        <li>Then a database, once more than one person writes.</li>
       </ol>
     </div>
   </div>
 
-  <div class="links" style="margin-top:3mm">
+  <div class="links" style="margin-top:2.6mm">
     <div class="qr">QR to the live example goes here</div>
     <p><b>Example repository</b> github.com/daviddw-scede/bbb-management-dashboard</p>
     <p><b>Live example</b> bbb-management-dashboard-daviddw-6234s-projects.vercel.app</p>
